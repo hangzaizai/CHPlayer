@@ -99,6 +99,7 @@
 		66910B0B1F3B2DB600581896 /* CHPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				66910B3F1F3B40DA00581896 /* Player */,
 				66910B0F1F3B2DB600581896 /* AppDelegate.h */,
 				66910B101F3B2DB600581896 /* AppDelegate.m */,
 				66910B121F3B2DB600581896 /* ViewController.h */,
@@ -135,6 +136,13 @@
 				66910B331F3B2DB600581896 /* Info.plist */,
 			);
 			path = CHPlayerUITests;
+			sourceTree = "<group>";
+		};
+		66910B3F1F3B40DA00581896 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
