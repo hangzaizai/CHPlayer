@@ -10,4 +10,6 @@
 
 @interface CHPlayer : NSObject
 
+- (instancetype)initWithURL:(NSURL *)aURL;
+
 @end
