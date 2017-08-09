@@ -14,6 +14,7 @@
 		66910B1C1F3B2DB600581896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66910B1A1F3B2DB600581896 /* LaunchScreen.storyboard */; };
 		66910B271F3B2DB600581896 /* CHPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B261F3B2DB600581896 /* CHPlayerTests.m */; };
 		66910B321F3B2DB600581896 /* CHPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B311F3B2DB600581896 /* CHPlayerUITests.m */; };
+		66910B421F3B419700581896 /* CHPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B411F3B419700581896 /* CHPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		66910B2D1F3B2DB600581896 /* CHPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CHPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66910B311F3B2DB600581896 /* CHPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHPlayerUITests.m; sourceTree = "<group>"; };
 		66910B331F3B2DB600581896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66910B401F3B419700581896 /* CHPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayer.h; sourceTree = "<group>"; };
+		66910B411F3B419700581896 /* CHPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 		66910B3F1F3B40DA00581896 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				66910B401F3B419700581896 /* CHPlayer.h */,
+				66910B411F3B419700581896 /* CHPlayer.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66910B141F3B2DB600581896 /* ViewController.m in Sources */,
+				66910B421F3B419700581896 /* CHPlayer.m in Sources */,
 				66910B111F3B2DB600581896 /* AppDelegate.m in Sources */,
 				66910B0E1F3B2DB600581896 /* main.m in Sources */,
 			);
