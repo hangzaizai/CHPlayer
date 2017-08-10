@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MacErrors.h>
 #import "CHPlayerError.h"
+#import "CHPlayerView.h"
 
 #define REFRESH_INTERNAL 0.5
 
@@ -25,8 +26,8 @@ static const NSString *playerItemContext;
 @property(nonatomic,strong)NSURL *currentURL;
 @property(nonatomic,strong)AVPlayerItem *playerItem;
 @property(nonatomic,strong)AVPlayer *player;
-@property(strong, nonatomic) id playEndObserver;
-@property(strong,nonatomic)
+@property(strong, nonatomic)id playEndObserver;
+@property(strong,nonatomic)CHPlayerView *playerView;
 
 @end
 
@@ -54,8 +55,15 @@ static const NSString *playerItemContext;
     if ( self ) {
         NSAssert(!aURL, @"url cann't be nil");
         self.currentURL = aURL;
+        [self checkAudioSession];
     }
     return self;
+}
+
+#pragma mark -accessor
+- (UIView *)videoView
+{
+    return self.playerView;
 }
 
 #pragma mark -observe for keyPath
@@ -73,6 +81,9 @@ static const NSString *playerItemContext;
                     [strongSelf handlePrepareToPlayWithDuration:kCMTimeZero WithError:strongSelf.playerItem.error];
                 }else if ( strongSelf.playerItem.status==AVPlayerItemStatusReadyToPlay ) {
                     [strongSelf handlePrepareToPlayWithDuration:strongSelf.playerItem.duration WithError:nil];
+                    self.playerView = [[CHPlayerView alloc] initWithFrame:CGRectZero];
+                    self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
+                    self.playerView.player = self.player;
                     [self addPlayerCurrentTimeObserver];
                     [self addPlayDoneObserver];
                 }
@@ -138,6 +149,21 @@ static const NSString *playerItemContext;
         [self.delegate player:self prepareToPlayWithDuration:time WithError:error];
     }
 }
+
+- (void)checkAudioSession
+{
+    if (![[AVAudioSession sharedInstance].category isEqualToString:AVAudioSessionCategoryPlayAndRecord]) {
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord
+                                         withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker | AVAudioSessionCategoryOptionDuckOthers
+                                               error:NULL];
+    }
+    if (![[AVAudioSession sharedInstance].mode isEqualToString:AVAudioSessionModeDefault]) {
+        [[AVAudioSession sharedInstance] setMode:AVAudioSessionModeDefault error:NULL];
+    }
+    [[AVAudioSession sharedInstance] setActive:YES error:NULL];
+}
+
+
 
 - (void)prepareToPlay
 {

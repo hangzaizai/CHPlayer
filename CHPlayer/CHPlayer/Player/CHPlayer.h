@@ -6,12 +6,20 @@
 //  Copyright © 2017年 陈行. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+@import UIKit;
 
 @protocol CHPlayerDelegate;
 
 @interface CHPlayer : NSObject
 
+
 @property(nonatomic,weak)id<CHPlayerDelegate> delegate;
+/**
+ 视频播放视图，当readToPlay之后，才会生成,否者为空
+ */
+@property(nonatomic,readonly)UIView *videoView;
+
+@property(nonatomic,readonly)NSURL *currentURL;
 
 - (instancetype)initWithURL:(NSURL *)aURL;
 

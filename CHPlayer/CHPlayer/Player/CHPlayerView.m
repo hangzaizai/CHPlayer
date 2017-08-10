@@ -10,13 +10,25 @@
 
 @implementation CHPlayerView
 
++ (Class)layerClass
+{
+    return [AVPlayerLayer class];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if ( self ) {
-        
+        self.layer.backgroundColor = [UIColor blackColor].CGColor;
     }
     return self;
 }
+
+- (void)setPlayer:(AVPlayer *)player
+{
+    [((AVPlayerLayer *)self.layer) setPlayer:player];
+}
+
+
 
 @end
