@@ -15,6 +15,10 @@
 		66910B271F3B2DB600581896 /* CHPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B261F3B2DB600581896 /* CHPlayerTests.m */; };
 		66910B321F3B2DB600581896 /* CHPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B311F3B2DB600581896 /* CHPlayerUITests.m */; };
 		66910B421F3B419700581896 /* CHPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B411F3B419700581896 /* CHPlayer.m */; };
+		66D6D5161F3C87E5003DA492 /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6D50E1F3C87E5003DA492 /* ALView+PureLayout.m */; };
+		66D6D5171F3C87E5003DA492 /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6D5101F3C87E5003DA492 /* NSArray+PureLayout.m */; };
+		66D6D5181F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6D5121F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m */; };
+		66F6F9F11F3C802E00A7D425 /* CHPlayerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F6F9F01F3C802E00A7D425 /* CHPlayerSlider.m */; };
 		774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC1551F3C555E0004CF7A /* CHPlayerView.m */; };
 		774DC15B1F3C63850004CF7A /* CHPlayerOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15A1F3C63850004CF7A /* CHPlayerOperationView.m */; };
 		774DC15E1F3C66820004CF7A /* CHPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15D1F3C66820004CF7A /* CHPlayerProgressView.m */; };
@@ -56,6 +60,17 @@
 		66910B331F3B2DB600581896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66910B401F3B419700581896 /* CHPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayer.h; sourceTree = "<group>"; };
 		66910B411F3B419700581896 /* CHPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayer.m; sourceTree = "<group>"; };
+		66D6D50D1F3C87E5003DA492 /* ALView+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALView+PureLayout.h"; sourceTree = "<group>"; };
+		66D6D50E1F3C87E5003DA492 /* ALView+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALView+PureLayout.m"; sourceTree = "<group>"; };
+		66D6D50F1F3C87E5003DA492 /* NSArray+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayout.h"; sourceTree = "<group>"; };
+		66D6D5101F3C87E5003DA492 /* NSArray+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PureLayout.m"; sourceTree = "<group>"; };
+		66D6D5111F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
+		66D6D5121F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
+		66D6D5131F3C87E5003DA492 /* PureLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PureLayout+Internal.h"; sourceTree = "<group>"; };
+		66D6D5141F3C87E5003DA492 /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
+		66D6D5151F3C87E5003DA492 /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
+		66F6F9EF1F3C802E00A7D425 /* CHPlayerSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerSlider.h; sourceTree = "<group>"; };
+		66F6F9F01F3C802E00A7D425 /* CHPlayerSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerSlider.m; sourceTree = "<group>"; };
 		774DC1511F3C07F40004CF7A /* CHPlayerError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPlayerError.h; sourceTree = "<group>"; };
 		774DC1541F3C555E0004CF7A /* CHPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerView.h; sourceTree = "<group>"; };
 		774DC1551F3C555E0004CF7A /* CHPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerView.m; sourceTree = "<group>"; };
@@ -94,6 +109,7 @@
 		66910B001F3B2DB600581896 = {
 			isa = PBXGroup;
 			children = (
+				66D6D50B1F3C87E5003DA492 /* thirdPart */,
 				66910B0B1F3B2DB600581896 /* CHPlayer */,
 				66910B251F3B2DB600581896 /* CHPlayerTests */,
 				66910B301F3B2DB600581896 /* CHPlayerUITests */,
@@ -168,6 +184,30 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
+		66D6D50B1F3C87E5003DA492 /* thirdPart */ = {
+			isa = PBXGroup;
+			children = (
+				66D6D50C1F3C87E5003DA492 /* PureLayout */,
+			);
+			path = thirdPart;
+			sourceTree = "<group>";
+		};
+		66D6D50C1F3C87E5003DA492 /* PureLayout */ = {
+			isa = PBXGroup;
+			children = (
+				66D6D50D1F3C87E5003DA492 /* ALView+PureLayout.h */,
+				66D6D50E1F3C87E5003DA492 /* ALView+PureLayout.m */,
+				66D6D50F1F3C87E5003DA492 /* NSArray+PureLayout.h */,
+				66D6D5101F3C87E5003DA492 /* NSArray+PureLayout.m */,
+				66D6D5111F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.h */,
+				66D6D5121F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m */,
+				66D6D5131F3C87E5003DA492 /* PureLayout+Internal.h */,
+				66D6D5141F3C87E5003DA492 /* PureLayout.h */,
+				66D6D5151F3C87E5003DA492 /* PureLayoutDefines.h */,
+			);
+			path = PureLayout;
+			sourceTree = "<group>";
+		};
 		774DC1571F3C631F0004CF7A /* playerCtrl */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +222,8 @@
 				774DC15A1F3C63850004CF7A /* CHPlayerOperationView.m */,
 				774DC15C1F3C66820004CF7A /* CHPlayerProgressView.h */,
 				774DC15D1F3C66820004CF7A /* CHPlayerProgressView.m */,
+				66F6F9EF1F3C802E00A7D425 /* CHPlayerSlider.h */,
+				66F6F9F01F3C802E00A7D425 /* CHPlayerSlider.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -326,8 +368,12 @@
 				774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */,
 				66910B141F3B2DB600581896 /* ViewController.m in Sources */,
 				66910B421F3B419700581896 /* CHPlayer.m in Sources */,
+				66D6D5181F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m in Sources */,
+				66D6D5171F3C87E5003DA492 /* NSArray+PureLayout.m in Sources */,
+				66D6D5161F3C87E5003DA492 /* ALView+PureLayout.m in Sources */,
 				66910B111F3B2DB600581896 /* AppDelegate.m in Sources */,
 				66910B0E1F3B2DB600581896 /* main.m in Sources */,
+				66F6F9F11F3C802E00A7D425 /* CHPlayerSlider.m in Sources */,
 				774DC15E1F3C66820004CF7A /* CHPlayerProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
