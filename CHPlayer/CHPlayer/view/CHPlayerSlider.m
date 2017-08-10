@@ -10,12 +10,10 @@
 
 @implementation CHPlayerSlider
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+//自定义滑块的区域
+- (CGRect)trackRectForBounds:(CGRect)bounds
+{
+    return CGRectMake(bounds.origin.x,(bounds.size.height-self.trackHeight)/2, bounds.size.width, self.trackHeight);
 }
-*/
 
 @end

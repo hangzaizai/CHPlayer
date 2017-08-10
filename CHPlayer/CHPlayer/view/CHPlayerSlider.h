@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ 自定义slider
+ */
 @interface CHPlayerSlider : UISlider
+
+@property(nonatomic,assign)CGFloat trackHeight;
 
 @end
