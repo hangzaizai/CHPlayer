@@ -16,6 +16,8 @@
 		66910B321F3B2DB600581896 /* CHPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B311F3B2DB600581896 /* CHPlayerUITests.m */; };
 		66910B421F3B419700581896 /* CHPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B411F3B419700581896 /* CHPlayer.m */; };
 		774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC1551F3C555E0004CF7A /* CHPlayerView.m */; };
+		774DC15B1F3C63850004CF7A /* CHPlayerOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15A1F3C63850004CF7A /* CHPlayerOperationView.m */; };
+		774DC15E1F3C66820004CF7A /* CHPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15D1F3C66820004CF7A /* CHPlayerProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,10 @@
 		774DC1511F3C07F40004CF7A /* CHPlayerError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPlayerError.h; sourceTree = "<group>"; };
 		774DC1541F3C555E0004CF7A /* CHPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerView.h; sourceTree = "<group>"; };
 		774DC1551F3C555E0004CF7A /* CHPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerView.m; sourceTree = "<group>"; };
+		774DC1591F3C63850004CF7A /* CHPlayerOperationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerOperationView.h; sourceTree = "<group>"; };
+		774DC15A1F3C63850004CF7A /* CHPlayerOperationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerOperationView.m; sourceTree = "<group>"; };
+		774DC15C1F3C66820004CF7A /* CHPlayerProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerProgressView.h; sourceTree = "<group>"; };
+		774DC15D1F3C66820004CF7A /* CHPlayerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,8 @@
 		66910B0B1F3B2DB600581896 /* CHPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				774DC1581F3C63260004CF7A /* view */,
+				774DC1571F3C631F0004CF7A /* playerCtrl */,
 				66910B3F1F3B40DA00581896 /* Player */,
 				66910B0F1F3B2DB600581896 /* AppDelegate.h */,
 				66910B101F3B2DB600581896 /* AppDelegate.m */,
@@ -155,6 +163,24 @@
 				774DC1551F3C555E0004CF7A /* CHPlayerView.m */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		774DC1571F3C631F0004CF7A /* playerCtrl */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = playerCtrl;
+			sourceTree = "<group>";
+		};
+		774DC1581F3C63260004CF7A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				774DC1591F3C63850004CF7A /* CHPlayerOperationView.h */,
+				774DC15A1F3C63850004CF7A /* CHPlayerOperationView.m */,
+				774DC15C1F3C66820004CF7A /* CHPlayerProgressView.h */,
+				774DC15D1F3C66820004CF7A /* CHPlayerProgressView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,11 +318,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				774DC15B1F3C63850004CF7A /* CHPlayerOperationView.m in Sources */,
 				774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */,
 				66910B141F3B2DB600581896 /* ViewController.m in Sources */,
 				66910B421F3B419700581896 /* CHPlayer.m in Sources */,
 				66910B111F3B2DB600581896 /* AppDelegate.m in Sources */,
 				66910B0E1F3B2DB600581896 /* main.m in Sources */,
+				774DC15E1F3C66820004CF7A /* CHPlayerProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
