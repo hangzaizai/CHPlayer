@@ -15,6 +15,7 @@
 		66910B271F3B2DB600581896 /* CHPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B261F3B2DB600581896 /* CHPlayerTests.m */; };
 		66910B321F3B2DB600581896 /* CHPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B311F3B2DB600581896 /* CHPlayerUITests.m */; };
 		66910B421F3B419700581896 /* CHPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B411F3B419700581896 /* CHPlayer.m */; };
+		774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC1551F3C555E0004CF7A /* CHPlayerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,9 @@
 		66910B331F3B2DB600581896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66910B401F3B419700581896 /* CHPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayer.h; sourceTree = "<group>"; };
 		66910B411F3B419700581896 /* CHPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayer.m; sourceTree = "<group>"; };
+		774DC1511F3C07F40004CF7A /* CHPlayerError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPlayerError.h; sourceTree = "<group>"; };
+		774DC1541F3C555E0004CF7A /* CHPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerView.h; sourceTree = "<group>"; };
+		774DC1551F3C555E0004CF7A /* CHPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,9 @@
 			children = (
 				66910B401F3B419700581896 /* CHPlayer.h */,
 				66910B411F3B419700581896 /* CHPlayer.m */,
+				774DC1511F3C07F40004CF7A /* CHPlayerError.h */,
+				774DC1541F3C555E0004CF7A /* CHPlayerView.h */,
+				774DC1551F3C555E0004CF7A /* CHPlayerView.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -285,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */,
 				66910B141F3B2DB600581896 /* ViewController.m in Sources */,
 				66910B421F3B419700581896 /* CHPlayer.m in Sources */,
 				66910B111F3B2DB600581896 /* AppDelegate.m in Sources */,
@@ -429,6 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HTD8US8PM8;
 				INFOPLIST_FILE = CHPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technology.chenhang.CHPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -441,6 +450,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HTD8US8PM8;
 				INFOPLIST_FILE = CHPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.technology.chenhang.CHPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,6 +526,7 @@
 				66910B381F3B2DB600581896 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66910B391F3B2DB600581896 /* Build configuration list for PBXNativeTarget "CHPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +535,7 @@
 				66910B3B1F3B2DB600581896 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66910B3C1F3B2DB600581896 /* Build configuration list for PBXNativeTarget "CHPlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +544,7 @@
 				66910B3E1F3B2DB600581896 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
