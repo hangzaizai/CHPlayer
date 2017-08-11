@@ -56,6 +56,6 @@
  @param view containerView
  @param time  时间
  */
-- (void)playerContainerView:(CHPlayerContainerView *)view expectedToTime:(NSTimeInterval)time
+- (void)playerContainerView:(CHPlayerContainerView *)view expectedToTime:(NSTimeInterval)time;
 
 @end

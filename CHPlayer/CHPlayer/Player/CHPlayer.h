@@ -66,14 +66,6 @@ readyToPlay
 
 
 /**
- 获取到时长信息
- @param player 当前player
- @param duration 视频的总时长,单位为秒
- */
-- (void)player:(CHPlayer *)player withDuration:(NSTimeInterval)duration;
-
-
-/**
  当前播放时间
  @param player 当前player
  @param currentTime 当前时间，单位为秒
