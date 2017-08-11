@@ -117,13 +117,17 @@
 
 - (void)playerContainerView:(CHPlayerContainerView *)view expectedToTime:(NSTimeInterval)time
 {
-    self.isDraging = NO;
+    
     __weak CHVedioPlayerCtrl *weakSelf = self;
     [self.player seekToTime:time withComplicated:^(BOOL finish) {
+        __strong CHVedioPlayerCtrl *strongSelf = weakSelf;
         if ( !finish ) {
-            __strong CHVedioPlayerCtrl *strongSelf = weakSelf;
             [strongSelf.player pause];
+            return;
         }
+        strongSelf.isDraging = NO;
+        
+        
     }];
 }
 

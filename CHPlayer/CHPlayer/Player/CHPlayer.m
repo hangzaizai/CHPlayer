@@ -31,6 +31,7 @@ static const NSString *playerContext;
 @property(nonatomic,strong)AVPlayer *player;
 @property(strong, nonatomic)id playEndObserver;
 @property(strong,nonatomic)CHPlayerView *playerView;
+@property(nonatomic,assign)BOOL isPlayDone;
 
 @end
 
@@ -49,6 +50,12 @@ static const NSString *playerContext;
     }
     if ( self.playerItem ) {
         [self.playerItem removeObserver:self forKeyPath:kCHPlayerPlayerPreloadTime context:&playerItemContext];
+        self.playerItem = nil;
+    }
+    
+    if ( self.player ) {
+        [self.player removeObserver:self forKeyPath:kCHPlayerPlayerRate context:&playerContext];
+        self.player = nil;
     }
 }
 
@@ -148,6 +155,7 @@ static const NSString *playerContext;
     __weak CHPlayer *weakSelf = self;
     self.playEndObserver = [[NSNotificationCenter defaultCenter] addObserverForName:name object:self.playerItem queue:queue usingBlock:^(NSNotification * _Nonnull note) {
         __strong CHPlayer *strongSelf = weakSelf;
+        strongSelf.isPlayDone = YES;
         if ( strongSelf.delegate && [self.delegate respondsToSelector:@selector(player:complicatedWithError:)] ) {
             [strongSelf.delegate player:strongSelf complicatedWithError:nil];
         }
@@ -229,6 +237,10 @@ static const NSString *playerContext;
 
 - (void)play
 {
+    if ( self.isPlayDone ) {
+        [self seekToTime:0 withComplicated:nil];
+        return;
+    }
     [self.player play];
 }
 

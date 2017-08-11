@@ -46,7 +46,8 @@
     self.playImageView = playImageView;
     playImageView.image = [UIImage imageNamed:@"public_video_play"];
     [playButton addSubview:playImageView];
-    [playImageView autoCenterInSuperview];
+    [playImageView autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+    [playImageView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:15];
     [playImageView autoSetDimensionsToSize:CGSizeMake(18, 18)];
     
     //当前播放时间
@@ -59,7 +60,7 @@
     [self addSubview:currentTimeLabel];
     
     [currentTimeLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-    [currentTimeLabel autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:playButton];
+    [currentTimeLabel autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:playImageView];
     [currentTimeLabel autoSetDimension:ALDimensionWidth toSize:45];
     
     //总时间

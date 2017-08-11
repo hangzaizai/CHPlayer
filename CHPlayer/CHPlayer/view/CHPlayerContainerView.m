@@ -49,6 +49,7 @@
     
     //操作区
     CHPlayerOperationView *operationView = [CHPlayerOperationView newAutoLayoutView];
+    operationView.hidden = YES;
     operationView.delegate = self;
     self.operationView = operationView;
     [self addSubview:operationView];
@@ -68,6 +69,8 @@
 {
     if ( self.delegate && [self.delegate respondsToSelector:@selector(playerContainerView:expectedPlay:)]) {
         [self hiddlenCoverContentWithBool:YES];
+        self.operationView.hidden = NO;
+        self.isPlaying = YES;
         [self.delegate playerContainerView:self expectedPlay:YES];
     }
 }
