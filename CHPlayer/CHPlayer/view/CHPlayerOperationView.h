@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 /**
- 播放器操作视图，包括播放控制区、转菊花、等
+ 播放器操作视图，播放按钮、播放进度条，播放器暂时不支持全屏后续完善
  */
 @interface CHPlayerOperationView : UIView
 
