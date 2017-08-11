@@ -19,6 +19,7 @@
 		66D6D5171F3C87E5003DA492 /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6D5101F3C87E5003DA492 /* NSArray+PureLayout.m */; };
 		66D6D5181F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6D5121F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m */; };
 		66F6F9F11F3C802E00A7D425 /* CHPlayerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F6F9F01F3C802E00A7D425 /* CHPlayerSlider.m */; };
+		770C3EC51F3D60C1009DA8E4 /* CHPlayerContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770C3EC41F3D60C1009DA8E4 /* CHPlayerContainerView.m */; };
 		774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC1551F3C555E0004CF7A /* CHPlayerView.m */; };
 		774DC15B1F3C63850004CF7A /* CHPlayerOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15A1F3C63850004CF7A /* CHPlayerOperationView.m */; };
 		774DC15E1F3C66820004CF7A /* CHPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15D1F3C66820004CF7A /* CHPlayerProgressView.m */; };
@@ -72,6 +73,8 @@
 		66F6F9EF1F3C802E00A7D425 /* CHPlayerSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerSlider.h; sourceTree = "<group>"; };
 		66F6F9F01F3C802E00A7D425 /* CHPlayerSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerSlider.m; sourceTree = "<group>"; };
 		770C3EC21F3D55C2009DA8E4 /* CHPlayer.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPlayer.pch; sourceTree = "<group>"; };
+		770C3EC31F3D60C1009DA8E4 /* CHPlayerContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerContainerView.h; sourceTree = "<group>"; };
+		770C3EC41F3D60C1009DA8E4 /* CHPlayerContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerContainerView.m; sourceTree = "<group>"; };
 		774DC1511F3C07F40004CF7A /* CHPlayerError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPlayerError.h; sourceTree = "<group>"; };
 		774DC1541F3C555E0004CF7A /* CHPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerView.h; sourceTree = "<group>"; };
 		774DC1551F3C555E0004CF7A /* CHPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerView.m; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 				774DC15D1F3C66820004CF7A /* CHPlayerProgressView.m */,
 				66F6F9EF1F3C802E00A7D425 /* CHPlayerSlider.h */,
 				66F6F9F01F3C802E00A7D425 /* CHPlayerSlider.m */,
+				770C3EC31F3D60C1009DA8E4 /* CHPlayerContainerView.h */,
+				770C3EC41F3D60C1009DA8E4 /* CHPlayerContainerView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				66910B0E1F3B2DB600581896 /* main.m in Sources */,
 				66F6F9F11F3C802E00A7D425 /* CHPlayerSlider.m in Sources */,
 				774DC15E1F3C66820004CF7A /* CHPlayerProgressView.m in Sources */,
+				770C3EC51F3D60C1009DA8E4 /* CHPlayerContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

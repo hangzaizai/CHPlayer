@@ -12,4 +12,12 @@
  */
 @interface CHPlayerOperationView : UIView
 
+@property(nonatomic,assign)BOOL isPlaying;
+
+@end
+
+@protocol CHPlayerOperationViewDelegate <NSObject>
+
+
+
 @end

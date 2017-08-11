@@ -35,6 +35,7 @@
 {
     //播放按钮触控区
     UIButton *playButton = [UIButton newAutoLayoutView];
+    [playButton addTarget:self action:@selector(playButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:playButton];
     [playButton autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeRight];
     [playButton autoSetDimension:ALDimensionWidth toSize:45];
@@ -86,7 +87,20 @@
     [progressView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
     [progressView autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:currentTimeLabel];
     [progressView autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:totalTimeLabel];
+}
+
+#pragma mark target
+- (void)playButtonPressed:(UIButton *)button
+{
+    self.isPlaying = !self.isPlaying;
     
+}
+
+#pragma mark setter
+- (void)setIsPlaying:(BOOL)isPlaying
+{
+    _isPlaying = isPlaying;
+    self.playImageView.image = isPlaying ? [UIImage imageNamed:@"public_video_play"] : [UIImage imageNamed:@"public_vedio_pause"];
 }
 
 @end
