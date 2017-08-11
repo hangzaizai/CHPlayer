@@ -20,6 +20,13 @@
 
 @property(nonatomic,weak)id<CHPlayerContainerViewDelegate> delegate;
 
+//缓冲时间
+@property(nonatomic,assign)NSTimeInterval preloadTime;
+//当前时间
+@property(nonatomic,assign)NSTimeInterval currentTime;
+//总时间
+@property(nonatomic,assign)NSTimeInterval totalTime;
+
 @end
 
 

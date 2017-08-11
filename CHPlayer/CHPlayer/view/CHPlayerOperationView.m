@@ -93,7 +93,9 @@
 - (void)playButtonPressed:(UIButton *)button
 {
     self.isPlaying = !self.isPlaying;
-    
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerOperationView:expectedPlaying:)]) {
+        [self.delegate playerOperationView:self expectedPlaying:self.isPlaying];
+    }
 }
 
 #pragma mark setter
@@ -102,5 +104,40 @@
     _isPlaying = isPlaying;
     self.playImageView.image = isPlaying ? [UIImage imageNamed:@"public_video_play"] : [UIImage imageNamed:@"public_vedio_pause"];
 }
+
+- (void)setPreloadTime:(NSTimeInterval)preloadTime
+{
+    _preloadTime = preloadTime;
+    self.progressView.preloadTime = preloadTime;
+}
+
+- (void)setCurrentTime:(NSTimeInterval)currentTime
+{
+    _currentTime = currentTime;
+    self.progressView.currentTime = currentTime;
+}
+
+- (void)setTotalTime:(NSTimeInterval)totalTime
+{
+    _totalTime = totalTime;
+    self.progressView.totalTime = totalTime;
+}
+
+#pragma mark -progressView Delegate
+- (void)progressView:(CHPlayerProgressView *)progressView change:(NSTimeInterval)value
+{
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerOperationView:change:)] ) {
+        [self.delegate playerOperationView:self change:value];
+    }
+}
+
+- (void)progressView:(CHPlayerProgressView *)progressView endChange:(NSTimeInterval)value
+{
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerOperationView:seekToTime:)]) {
+        [self.delegate playerOperationView:self seekToTime:value];
+    }
+}
+
+
 
 @end

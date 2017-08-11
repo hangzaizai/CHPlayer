@@ -9,7 +9,7 @@
 #import "CHPlayerContainerView.h"
 #import "CHPlayerOperationView.h"
 
-@interface CHPlayerContainerView ()
+@interface CHPlayerContainerView ()<CHPlayerOperationViewDelegate>
 
 @property(nonatomic,strong)CHPlayerOperationView *operationView;
 //封面图片
@@ -48,6 +48,7 @@
     
     //操作区
     CHPlayerOperationView *operationView = [CHPlayerOperationView newAutoLayoutView];
+    operationView.delegate = self;
     self.operationView = operationView;
     [self addSubview:operationView];
     [operationView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
@@ -66,7 +67,48 @@
 - (void)setIsPlaying:(BOOL)isPlaying
 {
     _isPlaying = isPlaying;
-    
+}
+
+- (void)setPreloadTime:(NSTimeInterval)preloadTime
+{
+    _preloadTime = preloadTime;
+    self.operationView.preloadTime = preloadTime;
+}
+
+- (void)setCurrentTime:(NSTimeInterval)currentTime
+{
+    _currentTime = currentTime;
+    self.operationView.currentTime = currentTime;
+}
+
+- (void)setTotalTime:(NSTimeInterval)totalTime
+{
+    _totalTime = totalTime;
+    self.operationView.totalTime = totalTime;
+}
+
+#pragma mark -OperationView delegate
+- (void)playerOperationView:(CHPlayerOperationView *)view expectedPlaying:(BOOL)play
+{
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerContainerView:expectedPlay:)]) {
+        [self.delegate playerContainerView:self expectedPlay:play];
+    }
+}
+
+- (void)playerOperationView:(CHPlayerOperationView *)view change:(NSTimeInterval)value
+{
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerContainerView:isDraging:)]){
+        [self.delegate playerContainerView:self isDraging:value];
+    }
+
+}
+
+- (void)playerOperationView:(CHPlayerOperationView *)view seekToTime:(NSTimeInterval)time
+{
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerContainerView:expectedToTime:)]){
+        [self.delegate playerContainerView:self expectedToTime:time];
+    }
+
 }
 
 @end
