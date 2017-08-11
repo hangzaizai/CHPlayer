@@ -103,7 +103,7 @@
 - (void)setIsPlaying:(BOOL)isPlaying
 {
     _isPlaying = isPlaying;
-    self.playImageView.image = isPlaying ? [UIImage imageNamed:@"public_video_play"] : [UIImage imageNamed:@"public_vedio_pause"];
+    self.playImageView.image = isPlaying ? [UIImage imageNamed:@"public_video_pause"] : [UIImage imageNamed:@"public_video_play"];
 }
 
 - (void)setPreloadTime:(NSTimeInterval)preloadTime

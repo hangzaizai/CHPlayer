@@ -16,4 +16,6 @@ typedef void (^CHTableViewCellConfigureBlock)(UITableViewCell *cell, id item);
                    identifier:(NSString *)cellIdentifier
        configurationCellBlock:(CHTableViewCellConfigureBlock)configurationBlock;
 
+- (id)itemAtIndexPath:(NSIndexPath *)indexPath;
+
 @end

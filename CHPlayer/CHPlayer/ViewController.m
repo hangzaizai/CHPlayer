@@ -51,6 +51,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CHVedioPlayViewController *vedioViewCtrl = [[CHVedioPlayViewController alloc] init];
+    vedioViewCtrl.vedioURL = [NSURL URLWithString:[self.dataSource itemAtIndexPath:indexPath]];
     [self.navigationController pushViewController:vedioViewCtrl animated:YES];
 }
 

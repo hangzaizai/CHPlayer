@@ -40,6 +40,7 @@
     
     //播放按钮
     UIButton *button = [UIButton newAutoLayoutView];
+    self.playCoverButton = button;
     [button setImage:[UIImage imageNamed:@"course_play"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(playButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
@@ -55,10 +56,18 @@
     [operationView autoSetDimension:ALDimensionHeight toSize:45];
 }
 
+#pragma mark -hiddlen
+- (void)hiddlenCoverContentWithBool:(BOOL)hiddlen
+{
+    self.backImgView.hidden = hiddlen;
+    self.playCoverButton.hidden = hiddlen;
+}
+
 #pragma mark -target
 - (void)playButtonPressed:(UIButton *)button
 {
     if ( self.delegate && [self.delegate respondsToSelector:@selector(playerContainerView:expectedPlay:)]) {
+        [self hiddlenCoverContentWithBool:YES];
         [self.delegate playerContainerView:self expectedPlay:YES];
     }
 }
@@ -67,6 +76,7 @@
 - (void)setIsPlaying:(BOOL)isPlaying
 {
     _isPlaying = isPlaying;
+    self.operationView.isPlaying = isPlaying;
 }
 
 - (void)setPreloadTime:(NSTimeInterval)preloadTime

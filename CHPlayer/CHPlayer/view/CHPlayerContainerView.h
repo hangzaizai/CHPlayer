@@ -27,6 +27,8 @@
 //总时间
 @property(nonatomic,assign)NSTimeInterval totalTime;
 
+- (void)hiddlenCoverContentWithBool:(BOOL)hiddlen;
+
 @end
 
 

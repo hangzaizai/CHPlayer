@@ -56,7 +56,7 @@ static const NSString *playerContext;
 {
     self = [super init];
     if ( self ) {
-        NSAssert(!aURL, @"url cann't be nil");
+        NSAssert(aURL!=nil, @"url cann't be nil");
         self.currentURL = aURL;
         [self checkAudioSession];
     }
@@ -82,12 +82,13 @@ static const NSString *playerContext;
                 if ( strongSelf.playerItem.status==AVPlayerItemStatusFailed ) {
                     [strongSelf handlePrepareToPlayWithDuration:kCMTimeZero WithError:strongSelf.playerItem.error];
                 }else if ( strongSelf.playerItem.status==AVPlayerItemStatusReadyToPlay ) {
-                    [strongSelf handlePrepareToPlayWithDuration:strongSelf.playerItem.duration WithError:nil];
+                   
                     self.playerView = [[CHPlayerView alloc] initWithFrame:CGRectZero];
                     self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
                     self.playerView.player = self.player;
                     [self addPlayerCurrentTimeObserver];
                     [self addPlayDoneObserver];
+                    [strongSelf handlePrepareToPlayWithDuration:strongSelf.playerItem.duration WithError:nil];
                 }
 
             }

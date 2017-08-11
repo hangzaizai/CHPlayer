@@ -30,6 +30,7 @@
         
         CHPlayer *player = [[CHPlayer alloc] initWithURL:aURL];
         self.player = player;
+        player.delegate = self;
         [player prepareToPlay];
         
         CHPlayerContainerView *containerView = [CHPlayerContainerView newAutoLayoutView];
@@ -45,6 +46,7 @@
 
 - (void)play
 {
+    [self.containerView hiddlenCoverContentWithBool:YES];
     [self.player play];
 }
 
