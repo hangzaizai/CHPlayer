@@ -88,11 +88,17 @@ readyToPlay
  */
 - (void)player:(CHPlayer *)player withPreloadTime:(NSTimeInterval)preloadTime;
 
+//是否正在播放
+- (void)player:(CHPlayer *)player isPlaying:(BOOL)isPlaying;
+
+
 /**
  在处理player的过程中(在播放过程中，或者是加载基本数据过程中,比如获取时长、播放状态信息)发生了任何错误或者是顺利完成播放，都会执行该回调.
  @param player 当前的player
  @param error error为空表示没有错误，
  */
 - (void)player:(CHPlayer *)player complicatedWithError:(NSError *)error;
+
+
 
 @end

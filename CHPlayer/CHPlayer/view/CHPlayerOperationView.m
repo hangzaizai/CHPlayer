@@ -127,6 +127,7 @@
 - (void)progressView:(CHPlayerProgressView *)progressView change:(NSTimeInterval)value
 {
     if ( self.delegate && [self.delegate respondsToSelector:@selector(playerOperationView:change:)] ) {
+        self.currentTime = value;
         [self.delegate playerOperationView:self change:value];
     }
 }

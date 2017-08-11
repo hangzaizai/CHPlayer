@@ -18,8 +18,11 @@
 static NSString * const kCHPlayerPlayerItemStatus = @"status";
 //缓冲时间
 static NSString * const kCHPlayerPlayerPreloadTime = @"loadedTimeRanges";
+//是否正在播放
+static NSString * const kCHPlayerPlayerRate = @"rate";
 
 static const NSString *playerItemContext;
+static const NSString *playerContext;
 
 @interface CHPlayer ()
 
@@ -69,11 +72,10 @@ static const NSString *playerItemContext;
 #pragma mark -observe for keyPath
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
+    __weak CHPlayer *weakSelf = self;
     if ( context==&playerItemContext ) {
-        __weak CHPlayer *weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             __strong CHPlayer *strongSelf = weakSelf;
-            
             if ( [keyPath isEqualToString:kCHPlayerPlayerItemStatus] ) {
                 
                 [strongSelf.playerItem removeObserver:strongSelf forKeyPath:kCHPlayerPlayerItemStatus context:&playerItemContext];
@@ -104,6 +106,18 @@ static const NSString *playerItemContext;
             }
             
         });
+    }
+    
+    if ( context== &playerContext ) {
+        if ( [keyPath isEqualToString:kCHPlayerPlayerRate] ) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __strong CHPlayer *strongSelf = weakSelf;
+                if ( strongSelf.delegate && [self.delegate respondsToSelector:@selector(player:isPlaying:)] ) {
+                    BOOL isPlaying = strongSelf.player.rate != 0 ? YES : NO;
+                    [strongSelf.delegate player:strongSelf isPlaying:isPlaying];
+                }
+            });
+        }
     }
 }
 
@@ -195,12 +209,17 @@ static const NSString *playerItemContext;
                 [strongSelf.playerItem removeObserver:self forKeyPath:kCHPlayerPlayerPreloadTime context:&playerItemContext];
                 strongSelf.playerItem = nil;
             }
+            if ( strongSelf.player ) {
+                [strongSelf.player removeObserver:self forKeyPath:kCHPlayerPlayerRate context:&playerContext];
+            }
+            
             
             //avplayer
             AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
             [playerItem addObserver:strongSelf forKeyPath:kCHPlayerPlayerItemStatus options:NSKeyValueObservingOptionNew context:&playerItemContext];
             strongSelf.playerItem = playerItem;
             AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+            [player addObserver:strongSelf forKeyPath:@"rate" options:NSKeyValueObservingOptionNew context:&playerContext];
             strongSelf.player = player;
             
         });
