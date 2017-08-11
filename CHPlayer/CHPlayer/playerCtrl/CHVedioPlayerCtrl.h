@@ -16,6 +16,9 @@
 
 @property(nonatomic,weak)id <CHVedioPlayerCtrlDelegate> delegate;
 
+- (void)play;
+- (void)pause;
+
 @end
 
 @protocol CHVedioPlayerCtrlDelegate <NSObject>

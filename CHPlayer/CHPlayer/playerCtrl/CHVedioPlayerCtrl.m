@@ -43,6 +43,16 @@
     return self;
 }
 
+- (void)play
+{
+    [self.player play];
+}
+
+- (void)pause
+{
+    [self.player pause];
+}
+
 #pragma mark -player
 - (void)player:(CHPlayer *)player prepareToPlayWithDuration:(NSTimeInterval)duration WithError:(NSError *)error
 {

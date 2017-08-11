@@ -22,6 +22,8 @@
 		770C3EC51F3D60C1009DA8E4 /* CHPlayerContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770C3EC41F3D60C1009DA8E4 /* CHPlayerContainerView.m */; };
 		770C3EC91F3D8C88009DA8E4 /* CHVedioPlayerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 770C3EC81F3D8C88009DA8E4 /* CHVedioPlayerCtrl.m */; };
 		770C3ECD1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 770C3ECC1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.m */; };
+		770C3ED01F3DA06E009DA8E4 /* CHTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 770C3ECF1F3DA06E009DA8E4 /* CHTableViewDataSource.m */; };
+		770C3ED31F3DA936009DA8E4 /* CHVedioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770C3ED21F3DA936009DA8E4 /* CHVedioPlayViewController.m */; };
 		774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC1551F3C555E0004CF7A /* CHPlayerView.m */; };
 		774DC15B1F3C63850004CF7A /* CHPlayerOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15A1F3C63850004CF7A /* CHPlayerOperationView.m */; };
 		774DC15E1F3C66820004CF7A /* CHPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15D1F3C66820004CF7A /* CHPlayerProgressView.m */; };
@@ -81,6 +83,10 @@
 		770C3EC81F3D8C88009DA8E4 /* CHVedioPlayerCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHVedioPlayerCtrl.m; sourceTree = "<group>"; };
 		770C3ECB1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+VedioTimeFormat.h"; sourceTree = "<group>"; };
 		770C3ECC1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+VedioTimeFormat.m"; sourceTree = "<group>"; };
+		770C3ECE1F3DA06E009DA8E4 /* CHTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTableViewDataSource.h; sourceTree = "<group>"; };
+		770C3ECF1F3DA06E009DA8E4 /* CHTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTableViewDataSource.m; sourceTree = "<group>"; };
+		770C3ED11F3DA936009DA8E4 /* CHVedioPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHVedioPlayViewController.h; sourceTree = "<group>"; };
+		770C3ED21F3DA936009DA8E4 /* CHVedioPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHVedioPlayViewController.m; sourceTree = "<group>"; };
 		774DC1511F3C07F40004CF7A /* CHPlayerError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPlayerError.h; sourceTree = "<group>"; };
 		774DC1541F3C555E0004CF7A /* CHPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerView.h; sourceTree = "<group>"; };
 		774DC1551F3C555E0004CF7A /* CHPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerView.m; sourceTree = "<group>"; };
@@ -148,6 +154,8 @@
 				66910B101F3B2DB600581896 /* AppDelegate.m */,
 				66910B121F3B2DB600581896 /* ViewController.h */,
 				66910B131F3B2DB600581896 /* ViewController.m */,
+				770C3ED11F3DA936009DA8E4 /* CHVedioPlayViewController.h */,
+				770C3ED21F3DA936009DA8E4 /* CHVedioPlayViewController.m */,
 				66910B181F3B2DB600581896 /* Assets.xcassets */,
 				66910B1A1F3B2DB600581896 /* LaunchScreen.storyboard */,
 				66910B1D1F3B2DB600581896 /* Info.plist */,
@@ -225,6 +233,8 @@
 			children = (
 				770C3ECB1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.h */,
 				770C3ECC1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.m */,
+				770C3ECE1F3DA06E009DA8E4 /* CHTableViewDataSource.h */,
+				770C3ECF1F3DA06E009DA8E4 /* CHTableViewDataSource.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -393,6 +403,7 @@
 				774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */,
 				66910B141F3B2DB600581896 /* ViewController.m in Sources */,
 				66910B421F3B419700581896 /* CHPlayer.m in Sources */,
+				770C3ED01F3DA06E009DA8E4 /* CHTableViewDataSource.m in Sources */,
 				66D6D5181F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				66D6D5171F3C87E5003DA492 /* NSArray+PureLayout.m in Sources */,
 				66D6D5161F3C87E5003DA492 /* ALView+PureLayout.m in Sources */,
@@ -401,6 +412,7 @@
 				66F6F9F11F3C802E00A7D425 /* CHPlayerSlider.m in Sources */,
 				774DC15E1F3C66820004CF7A /* CHPlayerProgressView.m in Sources */,
 				770C3ECD1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.m in Sources */,
+				770C3ED31F3DA936009DA8E4 /* CHVedioPlayViewController.m in Sources */,
 				770C3EC51F3D60C1009DA8E4 /* CHPlayerContainerView.m in Sources */,
 				770C3EC91F3D8C88009DA8E4 /* CHVedioPlayerCtrl.m in Sources */,
 			);

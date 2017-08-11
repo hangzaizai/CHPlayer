@@ -20,7 +20,7 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window = window;
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
     window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     

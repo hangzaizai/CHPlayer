@@ -8,6 +8,7 @@
 
 #import "CHPlayerOperationView.h"
 #import "CHPlayerProgressView.h"
+#import "NSString+VedioTimeFormat.h"
 
 @interface CHPlayerOperationView ()<CHPlayerProgressViewDelegate>
 
@@ -114,12 +115,14 @@
 - (void)setCurrentTime:(NSTimeInterval)currentTime
 {
     _currentTime = currentTime;
+    self.currentTimeLabel.text = [NSString textForTime:currentTime];
     self.progressView.currentTime = currentTime;
 }
 
 - (void)setTotalTime:(NSTimeInterval)totalTime
 {
     _totalTime = totalTime;
+    self.totalTimeLabel.text = [NSString textForTime:totalTime];
     self.progressView.totalTime = totalTime;
 }
 
