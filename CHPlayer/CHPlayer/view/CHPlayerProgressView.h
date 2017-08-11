@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
+@protocol CHPlayerProgressViewDelegate;
+
 /**
  进度条(缓冲进度、当前播放进度)
  */
@@ -29,5 +32,16 @@
 @property(nonatomic,assign)NSTimeInterval currentTime;
 //总时间
 @property(nonatomic,assign)NSTimeInterval totalTime;
+
+@property(nonatomic,weak)id<CHPlayerProgressViewDelegate> delegate;
+
+@end
+
+@protocol CHPlayerProgressViewDelegate <NSObject>
+
+//正在拖动
+- (void)progressView:(CHPlayerProgressView *)progressView change:(NSTimeInterval)value;
+//结束拖动
+- (void)progressView:(CHPlayerProgressView *)progressView endChange:(NSTimeInterval)value;
 
 @end
