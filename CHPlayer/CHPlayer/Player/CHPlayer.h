@@ -21,6 +21,9 @@
 
 @property(nonatomic,readonly)NSURL *currentURL;
 
+// YES表示边下边播,NO表示不用缓存资源,默认为YES
+@property(nonatomic,assign)BOOL isCacheResource;
+
 - (instancetype)initWithURL:(NSURL *)aURL;
 
 /**
