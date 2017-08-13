@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6642F8E61F3DE30400B3D27B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6642F8E51F3DE30400B3D27B /* MBProgressHUD.m */; };
 		66910B0E1F3B2DB600581896 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B0D1F3B2DB600581896 /* main.m */; };
 		66910B111F3B2DB600581896 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B101F3B2DB600581896 /* AppDelegate.m */; };
 		66910B141F3B2DB600581896 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B131F3B2DB600581896 /* ViewController.m */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6642F8E41F3DE30400B3D27B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		6642F8E51F3DE30400B3D27B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		66910B091F3B2DB600581896 /* CHPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66910B0D1F3B2DB600581896 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		66910B0F1F3B2DB600581896 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,6 +125,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6642F8E31F3DE30400B3D27B /* MBProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				6642F8E41F3DE30400B3D27B /* MBProgressHUD.h */,
+				6642F8E51F3DE30400B3D27B /* MBProgressHUD.m */,
+			);
+			path = MBProgressView;
+			sourceTree = "<group>";
+		};
 		66910B001F3B2DB600581896 = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +219,7 @@
 		66D6D50B1F3C87E5003DA492 /* thirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				6642F8E31F3DE30400B3D27B /* MBProgressView */,
 				66D6D50C1F3C87E5003DA492 /* PureLayout */,
 			);
 			path = thirdPart;
@@ -406,6 +419,7 @@
 				770C3ED01F3DA06E009DA8E4 /* CHTableViewDataSource.m in Sources */,
 				66D6D5181F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				66D6D5171F3C87E5003DA492 /* NSArray+PureLayout.m in Sources */,
+				6642F8E61F3DE30400B3D27B /* MBProgressHUD.m in Sources */,
 				66D6D5161F3C87E5003DA492 /* ALView+PureLayout.m in Sources */,
 				66910B111F3B2DB600581896 /* AppDelegate.m in Sources */,
 				66910B0E1F3B2DB600581896 /* main.m in Sources */,

@@ -29,11 +29,18 @@
 
 - (void)hiddlenCoverContentWithBool:(BOOL)hiddlen;
 
+//显示加载菊花
+- (void)showStartPlayerActivity;
+
+- (void)hideActivityView;
+
 @end
 
 
 @protocol CHPlayerContainerViewDelegate <NSObject>
 
+
+- (void)playerExpectedStartToPlayContainerView:(CHPlayerContainerView *)view;
 
 /**
  视图是否期望播放

@@ -18,11 +18,23 @@
 //正在拖动
 @property(nonatomic,assign)BOOL isDraging;
 
+//是否点击了播放按钮
+@property(nonatomic,assign)BOOL expectedPlay;
+
+@property(nonatomic,assign)BOOL isReadyToPlay;
+
 @end
 
 
 @implementation CHVedioPlayerCtrl
 
+- (void)dealloc
+{
+    
+    self.player = nil;
+    self.containerView = nil;
+    NSLog(@"%@ dealloc",NSStringFromClass([self class]));
+}
 - (instancetype)initWithURL:(NSURL *)aURL playInView:(UIView *)view
 {
     self = [super init];
@@ -60,9 +72,15 @@
 {
     
     if ( !error ) {
+        self.isReadyToPlay = YES;
         self.containerView.totalTime = duration;
         [self.containerView insertSubview:player.videoView atIndex:0];
         [player.videoView autoPinEdgesToSuperviewEdges];
+        
+        if ( self.expectedPlay ) {
+            [self.containerView hideActivityView];
+            [self.player play];
+        }
     }
     
     if ( self.delegate && [self.delegate respondsToSelector:@selector(player:prepareToPlayWithDuration:WithError:)]) {
@@ -101,6 +119,18 @@
 
 
 #pragma mark -containerView
+
+- (void)playerExpectedStartToPlayContainerView:(CHPlayerContainerView *)view
+{
+    
+    if ( self.isReadyToPlay ) {
+        [self.player play];
+    }else{
+        [self.containerView showStartPlayerActivity];
+        self.expectedPlay = YES;
+    }
+}
+
 - (void)playerContainerView:(CHPlayerContainerView *)view isDraging:(NSTimeInterval)time
 {
     self.isDraging = YES;

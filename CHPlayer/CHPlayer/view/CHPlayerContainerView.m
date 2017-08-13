@@ -16,10 +16,18 @@
 @property(nonatomic,strong)UIImageView *backImgView;
 @property(nonatomic,strong)UIButton *playCoverButton;
 
+@property(nonatomic,strong)MBProgressHUD *hud;
+
 @end
 
 
 @implementation CHPlayerContainerView
+
+- (void)dealloc
+{
+    
+    NSLog(@"%@ dealloc",NSStringFromClass([self class]));
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -64,14 +72,30 @@
     self.playCoverButton.hidden = hiddlen;
 }
 
+- (void)showStartPlayerActivity
+{
+    self.playCoverButton.hidden = YES;
+    if ( self.hud ) {
+        [self.hud hideAnimated:YES];
+        self.hud = nil;
+    }
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:self animated:YES];
+    self.hud = hud;
+}
+
+- (void)hideActivityView
+{
+    [self hiddlenCoverContentWithBool:YES];
+    self.operationView.hidden = NO;
+    [self.hud hideAnimated:YES];
+    self.hud = nil;
+}
+
 #pragma mark -target
 - (void)playButtonPressed:(UIButton *)button
 {
-    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerContainerView:expectedPlay:)]) {
-        [self hiddlenCoverContentWithBool:YES];
-        self.operationView.hidden = NO;
-        self.isPlaying = YES;
-        [self.delegate playerContainerView:self expectedPlay:YES];
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerExpectedStartToPlayContainerView:)]) {
+        [self.delegate playerExpectedStartToPlayContainerView:self];
     }
 }
 

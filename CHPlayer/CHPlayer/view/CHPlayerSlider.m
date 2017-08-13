@@ -10,6 +10,12 @@
 
 @implementation CHPlayerSlider
 
+- (void)dealloc
+{
+    
+    NSLog(@"%@ dealloc",NSStringFromClass([self class]));
+}
+
 //自定义滑块的区域
 - (CGRect)trackRectForBounds:(CGRect)bounds
 {

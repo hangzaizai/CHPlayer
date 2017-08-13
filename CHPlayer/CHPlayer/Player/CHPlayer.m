@@ -44,12 +44,16 @@ static const NSString *playerContext;
 
 - (void)dealloc
 {
+    
+    NSLog(@"%@ dealloc",NSStringFromClass([self class]));
+    
     if ( self.playEndObserver ) {
         [[NSNotificationCenter defaultCenter] removeObserver:self.playEndObserver name:AVPlayerItemDidPlayToEndTimeNotification object:self.playerItem];
         self.playEndObserver = nil;
     }
     if ( self.playerItem ) {
         [self.playerItem removeObserver:self forKeyPath:kCHPlayerPlayerPreloadTime context:&playerItemContext];
+        [self.playerItem removeObserver:self forKeyPath:kCHPlayerPlayerItemStatus context:&playerItemContext];
         self.playerItem = nil;
     }
     
@@ -85,16 +89,16 @@ static const NSString *playerContext;
             __strong CHPlayer *strongSelf = weakSelf;
             if ( [keyPath isEqualToString:kCHPlayerPlayerItemStatus] ) {
                 
-                [strongSelf.playerItem removeObserver:strongSelf forKeyPath:kCHPlayerPlayerItemStatus context:&playerItemContext];
+                //[strongSelf.playerItem removeObserver:strongSelf forKeyPath:kCHPlayerPlayerItemStatus context:&playerItemContext];
                 if ( strongSelf.playerItem.status==AVPlayerItemStatusFailed ) {
                     [strongSelf handlePrepareToPlayWithDuration:kCMTimeZero WithError:strongSelf.playerItem.error];
                 }else if ( strongSelf.playerItem.status==AVPlayerItemStatusReadyToPlay ) {
                    
-                    self.playerView = [[CHPlayerView alloc] initWithFrame:CGRectZero];
-                    self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
-                    self.playerView.player = self.player;
-                    [self addPlayerCurrentTimeObserver];
-                    [self addPlayDoneObserver];
+                    strongSelf.playerView = [[CHPlayerView alloc] initWithFrame:CGRectZero];
+                    strongSelf.playerView.translatesAutoresizingMaskIntoConstraints = NO;
+                    strongSelf.playerView.player = self.player;
+                    [strongSelf addPlayerCurrentTimeObserver];
+                    [strongSelf addPlayDoneObserver];
                     [strongSelf handlePrepareToPlayWithDuration:strongSelf.playerItem.duration WithError:nil];
                 }
 
@@ -120,7 +124,7 @@ static const NSString *playerContext;
         if ( [keyPath isEqualToString:kCHPlayerPlayerRate] ) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 __strong CHPlayer *strongSelf = weakSelf;
-                if ( strongSelf.delegate && [self.delegate respondsToSelector:@selector(player:isPlaying:)] ) {
+                if ( strongSelf.delegate && [strongSelf.delegate respondsToSelector:@selector(player:isPlaying:)] ) {
                     BOOL isPlaying = strongSelf.player.rate != 0 ? YES : NO;
                     [strongSelf.delegate player:strongSelf isPlaying:isPlaying];
                 }
@@ -156,7 +160,7 @@ static const NSString *playerContext;
     self.playEndObserver = [[NSNotificationCenter defaultCenter] addObserverForName:name object:self.playerItem queue:queue usingBlock:^(NSNotification * _Nonnull note) {
         __strong CHPlayer *strongSelf = weakSelf;
         strongSelf.isPlayDone = YES;
-        if ( strongSelf.delegate && [self.delegate respondsToSelector:@selector(player:complicatedWithError:)] ) {
+        if ( strongSelf.delegate && [strongSelf.delegate respondsToSelector:@selector(player:complicatedWithError:)] ) {
             [strongSelf.delegate player:strongSelf complicatedWithError:nil];
         }
     }];
@@ -215,17 +219,18 @@ static const NSString *playerContext;
             
             if ( strongSelf.playerItem ) {
                 //移出缓冲时间监听
-                [strongSelf.playerItem removeObserver:self forKeyPath:kCHPlayerPlayerPreloadTime context:&playerItemContext];
+                [strongSelf.playerItem removeObserver:strongSelf forKeyPath:kCHPlayerPlayerPreloadTime context:&playerItemContext];
                 strongSelf.playerItem = nil;
             }
             if ( strongSelf.player ) {
-                [strongSelf.player removeObserver:self forKeyPath:kCHPlayerPlayerRate context:&playerContext];
+                [strongSelf.player removeObserver:strongSelf forKeyPath:kCHPlayerPlayerRate context:&playerContext];
             }
             
             
             //avplayer
             AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
             [playerItem addObserver:strongSelf forKeyPath:kCHPlayerPlayerItemStatus options:NSKeyValueObservingOptionNew context:&playerItemContext];
+            [playerItem addObserver:strongSelf forKeyPath:kCHPlayerPlayerPreloadTime options:NSKeyValueObservingOptionNew context:&playerItemContext];
             strongSelf.playerItem = playerItem;
             AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
             [player addObserver:strongSelf forKeyPath:@"rate" options:NSKeyValueObservingOptionNew context:&playerContext];
@@ -238,7 +243,14 @@ static const NSString *playerContext;
 - (void)play
 {
     if ( self.isPlayDone ) {
-        [self seekToTime:0 withComplicated:nil];
+        __weak CHPlayer *weakSelf = self;
+        [self seekToTime:0 withComplicated:^(BOOL finish){
+            __strong CHPlayer *strongSelf = weakSelf;
+            if ( finish ) {
+                [strongSelf.player play];
+            }
+        }];
+        self.isPlayDone = NO;
         return;
     }
     [self.player play];

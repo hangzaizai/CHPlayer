@@ -17,6 +17,12 @@
 
 @implementation CHVedioPlayViewController
 
+- (void)dealloc
+{
+    [self.playCtrl pause];
+    NSLog(@"%@ dealloc",NSStringFromClass([self class]));
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];

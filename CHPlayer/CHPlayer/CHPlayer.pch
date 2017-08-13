@@ -10,5 +10,6 @@
 #define CHPlayer_pch
 
 #import "PureLayout.h"
+#import "MBProgressHUD.h"
 
 #endif /* CHPlayer_pch */

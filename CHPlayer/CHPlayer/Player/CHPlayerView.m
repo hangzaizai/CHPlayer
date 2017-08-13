@@ -10,6 +10,11 @@
 
 @implementation CHPlayerView
 
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc",NSStringFromClass([self class]));
+}
+
 + (Class)layerClass
 {
     return [AVPlayerLayer class];
