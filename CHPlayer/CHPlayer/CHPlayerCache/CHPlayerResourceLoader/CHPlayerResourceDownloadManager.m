@@ -24,6 +24,9 @@
     self = [super init];
     if ( self ) {
         
+        self.currentURL = url;
+        self.currentRange = range;
+        
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         configuration.requestCachePolicy = NSURLRequestReloadIgnoringCacheData;
         configuration.timeoutIntervalForRequest = 30;
@@ -49,7 +52,10 @@
  */
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
 {
-    
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerResourceDownloadManager:didReceiveResponse:)]) {
+        [self.delegate playerResourceDownloadManager:self didReceiveResponse:(NSHTTPURLResponse *)response];
+    }
+    completionHandler(NSURLSessionResponseAllow);
 }
 
 
@@ -58,7 +64,9 @@
  */
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
 {
-    
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerResourceDownloadManager:didReceiveReceiveData:)] ) {
+        [self.delegate playerResourceDownloadManager:self didReceiveReceiveData:data];
+    }
 }
 
 
@@ -67,7 +75,9 @@
  */
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
-    
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerResourceDownloadManager:didComplicatedWithError:)] ) {
+        [self.delegate playerResourceDownloadManager:self didComplicatedWithError:error];
+    }
 }
 
 @end
