@@ -22,12 +22,6 @@
 
 @property(nonatomic,strong)NSMutableData *receiveData;
 
-//写入文件
-@property(nonatomic,strong)NSFileHandle *writeFileHandle;
-//读文件操作
-@property(nonatomic,strong)NSFileHandle *readFileHandel;
-
-
 @end
 
 @implementation CHPlayerResourceLoadingRequestManager
@@ -78,38 +72,7 @@
  */
 - (void)createDownloadFilePathWithURL:(NSURL *)aURL
 {
-    NSString *tmpDirectory = NSTemporaryDirectory();
-    //通过文件名来建立临时文件
-    NSString *fileName = [[aURL lastPathComponent] stringByDeletingPathExtension];
-    
-    NSString *tmpFileDirectory = [tmpDirectory stringByAppendingPathComponent:fileName];
-    
-    if ( ![[NSFileManager defaultManager] fileExistsAtPath:tmpFileDirectory] ) {
-        NSError *error;
-        [[NSFileManager defaultManager] createDirectoryAtPath:tmpFileDirectory withIntermediateDirectories:YES attributes:nil error:&error];
-        if ( error ) {
-            if ( self.delegate && [self.delegate respondsToSelector:@selector(playerResourceLoadingRequestManager:didComplicatedWithError:)] ) {
-                [self.delegate playerResourceLoadingRequestManager:self didComplicatedWithError:error];
-            }
-            return;
-        }
-    }
-    
-    NSError *error = nil;
-    
-    NSString *filePath = [tmpFileDirectory stringByAppendingPathComponent:[aURL lastPathComponent]];
-    
-    if ( ![[NSFileManager defaultManager] fileExistsAtPath:filePath] ) {
-        [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
-    }
-    self.writeFileHandle = [NSFileHandle fileHandleForWritingToURL:[NSURL fileURLWithPath:filePath] error:&error];
-    if ( !error ) {
-        if ( self.delegate && [self.delegate respondsToSelector:@selector(playerResourceLoadingRequestManager:didComplicatedWithError:)] ) {
-            [self.delegate playerResourceLoadingRequestManager:self didComplicatedWithError:error];
-        }
-        return;
-    }
-    
+        
 }
 
 #pragma mark - resourceDownloadManager
@@ -122,7 +85,11 @@
     self.currentLoadingRequest.contentInformationRequest.byteRangeAccessSupported = contentInfo.byteRangeAccessSupported;
     
     self.cacheInfo.fileSize = contentInfo.contentLength;
+    
+    //初始化接收数据
     self.receiveData = [NSMutableData dataWithLength:contentInfo.contentLength];
+    
+    //设置文件的长度
 }
 
 - (void)playerResourceDownloadManager:(CHPlayerResourceDownloadManager *)mamager didReceiveReceiveData:(NSData *)data
