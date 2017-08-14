@@ -106,6 +106,19 @@
     [self.writeFileHandle writeData:data];
 }
 
+#pragma mark -range
+
+/**
+ 检测下载的数据是否已经下载完
+ */
+- (BOOL)checkDownloadDataIsFull
+{
+    for ( NSValue *value in self.ranges ) {
+        NSRange range = [value rangeValue];
+    }
+    
+    return YES;
+}
 
 
 @end
