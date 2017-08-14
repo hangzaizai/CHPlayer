@@ -113,9 +113,7 @@
  */
 - (BOOL)checkDownloadDataIsFull
 {
-    for ( NSValue *value in self.ranges ) {
-        NSRange range = [value rangeValue];
-    }
+    
     
     return YES;
 }
