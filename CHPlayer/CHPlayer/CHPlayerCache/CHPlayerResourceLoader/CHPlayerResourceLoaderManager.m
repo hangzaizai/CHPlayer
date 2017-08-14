@@ -28,4 +28,14 @@
     return self;
 }
 
+- (void)addAssetResourceLoadingRequest:(AVAssetResourceLoadingRequest *)request
+{
+    
+}
+
+- (void)cancelAssetResourceLoadingRequest:(AVAssetResourceLoadingRequest *)request
+{
+    
+}
+
 @end

@@ -196,7 +196,6 @@ static const NSString *playerContext;
 - (void)prepareToPlay
 {
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:self.currentURL options:nil];
-    asset.resourceLoader.delegate = 
     __weak CHPlayer *weakSelf = self;
     [asset loadValuesAsynchronouslyForKeys:[[self class] assetKeysShouldBeLoaded] completionHandler:^{
         

@@ -30,6 +30,7 @@
 		770C3ED31F3DA936009DA8E4 /* CHVedioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770C3ED21F3DA936009DA8E4 /* CHVedioPlayViewController.m */; };
 		773EBEAF1F41438F00C6E565 /* CHPlayerResourceCacheInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EBEAE1F41438F00C6E565 /* CHPlayerResourceCacheInfo.m */; };
 		773EBEB41F41631000C6E565 /* CHPlayerResourceContentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EBEB31F41631000C6E565 /* CHPlayerResourceContentInfo.m */; };
+		773EBEB71F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EBEB61F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.m */; };
 		774DC1561F3C555E0004CF7A /* CHPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC1551F3C555E0004CF7A /* CHPlayerView.m */; };
 		774DC15B1F3C63850004CF7A /* CHPlayerOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15A1F3C63850004CF7A /* CHPlayerOperationView.m */; };
 		774DC15E1F3C66820004CF7A /* CHPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774DC15D1F3C66820004CF7A /* CHPlayerProgressView.m */; };
@@ -105,6 +106,8 @@
 		773EBEAE1F41438F00C6E565 /* CHPlayerResourceCacheInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerResourceCacheInfo.m; sourceTree = "<group>"; };
 		773EBEB21F41631000C6E565 /* CHPlayerResourceContentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerResourceContentInfo.h; sourceTree = "<group>"; };
 		773EBEB31F41631000C6E565 /* CHPlayerResourceContentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerResourceContentInfo.m; sourceTree = "<group>"; };
+		773EBEB51F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerResourceLoadingRequestManager.h; sourceTree = "<group>"; };
+		773EBEB61F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerResourceLoadingRequestManager.m; sourceTree = "<group>"; };
 		774DC1511F3C07F40004CF7A /* CHPlayerError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHPlayerError.h; sourceTree = "<group>"; };
 		774DC1541F3C555E0004CF7A /* CHPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerView.h; sourceTree = "<group>"; };
 		774DC1551F3C555E0004CF7A /* CHPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerView.m; sourceTree = "<group>"; };
@@ -161,6 +164,8 @@
 				773EBEAE1F41438F00C6E565 /* CHPlayerResourceCacheInfo.m */,
 				773EBEB21F41631000C6E565 /* CHPlayerResourceContentInfo.h */,
 				773EBEB31F41631000C6E565 /* CHPlayerResourceContentInfo.m */,
+				773EBEB51F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.h */,
+				773EBEB61F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.m */,
 			);
 			path = CHPlayerResourceLoader;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				6613E19F1F408B16003608CE /* CHPlayerResourceLoaderManager.m in Sources */,
 				770C3ECD1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.m in Sources */,
 				6613E19C1F4087DA003608CE /* CHPlayerResourceLoaderDelegate.m in Sources */,
+				773EBEB71F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.m in Sources */,
 				770C3ED31F3DA936009DA8E4 /* CHVedioPlayViewController.m in Sources */,
 				770C3EC51F3D60C1009DA8E4 /* CHPlayerContainerView.m in Sources */,
 				770C3EC91F3D8C88009DA8E4 /* CHVedioPlayerCtrl.m in Sources */,
