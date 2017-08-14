@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+
+/**
+ 资源的基本信息
+ */
 @interface CHPlayerResourceContentInfo : NSObject
 
-@property(nonatomic,copy)NSString *contentType;
-@property(nonatomic,assign)BOOL byteRangeAccessSupported;
-@property (nonatomic) long long contentLength;
+- (instancetype)initWithHTTPResponse:(NSHTTPURLResponse *)response;
+
+@property(nonatomic,readonly,copy)NSString *contentType;
+@property(nonatomic,readonly,assign)BOOL byteRangeAccessSupported;
+@property (nonatomic,readonly,assign) long long contentLength;
 
 @end
