@@ -67,13 +67,7 @@
 }
 
 
-/**
- 创建下载临时文件路径
- */
-- (void)createDownloadFilePathWithURL:(NSURL *)aURL
-{
-        
-}
+
 
 #pragma mark - resourceDownloadManager
 - (void)playerResourceDownloadManager:(CHPlayerResourceDownloadManager *)mamager didReceiveResponse:(NSHTTPURLResponse *)response

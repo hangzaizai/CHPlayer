@@ -10,6 +10,7 @@
 		6613E19C1F4087DA003608CE /* CHPlayerResourceLoaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6613E19B1F4087DA003608CE /* CHPlayerResourceLoaderDelegate.m */; };
 		6613E19F1F408B16003608CE /* CHPlayerResourceLoaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6613E19E1F408B16003608CE /* CHPlayerResourceLoaderManager.m */; };
 		6613E1A21F408C88003608CE /* CHPlayerResourceDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6613E1A11F408C88003608CE /* CHPlayerResourceDownloadManager.m */; };
+		6636B6231F4478D000D59599 /* CHPlayerResourceCacheConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6636B6221F4478D000D59599 /* CHPlayerResourceCacheConfiguration.m */; };
 		6642F8E61F3DE30400B3D27B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6642F8E51F3DE30400B3D27B /* MBProgressHUD.m */; };
 		66910B0E1F3B2DB600581896 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B0D1F3B2DB600581896 /* main.m */; };
 		66910B111F3B2DB600581896 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B101F3B2DB600581896 /* AppDelegate.m */; };
@@ -61,6 +62,8 @@
 		6613E19E1F408B16003608CE /* CHPlayerResourceLoaderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerResourceLoaderManager.m; sourceTree = "<group>"; };
 		6613E1A01F408C88003608CE /* CHPlayerResourceDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerResourceDownloadManager.h; sourceTree = "<group>"; };
 		6613E1A11F408C88003608CE /* CHPlayerResourceDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerResourceDownloadManager.m; sourceTree = "<group>"; };
+		6636B6211F4478D000D59599 /* CHPlayerResourceCacheConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHPlayerResourceCacheConfiguration.h; sourceTree = "<group>"; };
+		6636B6221F4478D000D59599 /* CHPlayerResourceCacheConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerResourceCacheConfiguration.m; sourceTree = "<group>"; };
 		6642F8E41F3DE30400B3D27B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		6642F8E51F3DE30400B3D27B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		66910B091F3B2DB600581896 /* CHPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +169,8 @@
 				773EBEB31F41631000C6E565 /* CHPlayerResourceContentInfo.m */,
 				773EBEB51F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.h */,
 				773EBEB61F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.m */,
+				6636B6211F4478D000D59599 /* CHPlayerResourceCacheConfiguration.h */,
+				6636B6221F4478D000D59599 /* CHPlayerResourceCacheConfiguration.m */,
 			);
 			path = CHPlayerResourceLoader;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 				6613E19F1F408B16003608CE /* CHPlayerResourceLoaderManager.m in Sources */,
 				770C3ECD1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.m in Sources */,
 				6613E19C1F4087DA003608CE /* CHPlayerResourceLoaderDelegate.m in Sources */,
+				6636B6231F4478D000D59599 /* CHPlayerResourceCacheConfiguration.m in Sources */,
 				773EBEB71F4189C200C6E565 /* CHPlayerResourceLoadingRequestManager.m in Sources */,
 				770C3ED31F3DA936009DA8E4 /* CHVedioPlayViewController.m in Sources */,
 				770C3EC51F3D60C1009DA8E4 /* CHPlayerContainerView.m in Sources */,

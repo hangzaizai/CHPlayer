@@ -7,6 +7,7 @@
 //
 
 #import "CHPlayerResourceCacheInfo.h"
+#import "CHPlayerResourceCacheConfiguration.h"
 
 @interface CHPlayerResourceCacheInfo ()
 
@@ -36,6 +37,8 @@
     self = [super init];
     if ( self ) {
         self.cacheRanges = [NSMutableArray array];
+        self.fileName = fileName;
+        [self createTmpFilePath];
     }
     return self;
 }
@@ -100,10 +103,25 @@
 //将文件写入指定的range中
 - (void)writeDataToFileWithData:(NSData *)data withRange:(NSRange)range
 {
+    if ( [self checkDownloadDataIsFull] ) {
+        
+        NSError *error = nil;
+        
+        //将临时文件拷贝到永久文件
+        [[CHPlayerResourceCacheConfiguration shareInstance] copyFileWithResource:[self.fileHandleURL absoluteString] withDesName:self.fileName withError:&error];
+        if ( error ) {
+            NSLog(@"拷贝文件失败,错误信息为:%@",error);
+            
+        }
+        
+        return;
+    }
     
     [self.cacheRanges addObject:[NSValue valueWithRange:range]];
     [self.writeFileHandle seekToFileOffset:range.location];
     [self.writeFileHandle writeData:data];
+    
+    
 }
 
 #pragma mark -range
@@ -113,7 +131,37 @@
  */
 - (BOOL)checkDownloadDataIsFull
 {
+    //对数据进行排序
+    NSArray *sortedArr = [self.cacheRanges sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        
+        NSRange rangeOne = [(NSValue *)obj1 rangeValue];
+        NSRange rangeTwo = [(NSValue *)obj2 rangeValue];
+        
+        NSComparisonResult result = rangeOne.location <= rangeTwo.location ? NSOrderedAscending : NSOrderedDescending;
+        return result==NSOrderedAscending;
+    }];
     
+    NSRange firstRange = [((NSValue *)[sortedArr firstObject]) rangeValue];
+    NSRange lastRange = [((NSValue *)[sortedArr lastObject]) rangeValue];
+    
+    if ( firstRange.location > 0 ) {
+        return NO;
+    }
+    
+    if ( NSMaxRange(lastRange) < self.fileSize ) {
+        return NO;
+    }
+    
+    NSInteger maxRange = NSMaxRange(firstRange);
+    for ( int i = 1 ; i < sortedArr.count ; i++ ) {
+        
+        NSRange range = [sortedArr[i] rangeValue];
+        if ( maxRange < range.location ) {
+            return NO;
+        }
+        
+        maxRange = NSMaxRange(range);
+    }
     
     return YES;
 }

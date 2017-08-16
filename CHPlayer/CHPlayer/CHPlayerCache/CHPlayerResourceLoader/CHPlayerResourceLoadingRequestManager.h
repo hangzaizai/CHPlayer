@@ -25,6 +25,8 @@
 
 - (instancetype)initWithResourceLoadingRequest:(AVAssetResourceLoadingRequest *)request withChPlayerCacheInfo:(CHPlayerResourceCacheInfo *)cacheInfo;
 
+- (void)startDownload;
+
 @end
 
 

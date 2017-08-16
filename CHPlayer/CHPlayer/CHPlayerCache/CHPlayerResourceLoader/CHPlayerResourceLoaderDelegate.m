@@ -7,15 +7,32 @@
 //
 
 #import "CHPlayerResourceLoaderDelegate.h"
+#import "CHPlayerResourceLoaderManager.h"
+
+@interface CHPlayerResourceLoaderDelegate ()
+
+@property(nonatomic,strong)CHPlayerResourceLoaderManager *resourceLoaderManager;
+
+@end
 
 @implementation CHPlayerResourceLoaderDelegate
 
+- (instancetype)init
+{
+    self = [super init];
+    if ( self ) {
+        CHPlayerResourceLoaderManager *resourceLoaderManager = [[CHPlayerResourceLoaderManager alloc] init];
+        self.resourceLoaderManager = resourceLoaderManager;
+    }
+    return self;
+}
 
 /**
  resoueceLoader等待资源下载
  */
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest
 {
+    [self.resourceLoaderManager addAssetResourceLoadingRequest:loadingRequest];
     return YES;
 }
 
@@ -26,7 +43,7 @@
  */
 - (void)resourceLoader:(AVAssetResourceLoader *)resourceLoader didCancelLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest
 {
-    
+    [self.resourceLoaderManager cancelAssetResourceLoadingRequest:loadingRequest];
 }
 
 

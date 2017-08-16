@@ -11,6 +11,7 @@
 #import <MacErrors.h>
 #import "CHPlayerError.h"
 #import "CHPlayerView.h"
+#import "CHPlayerResourceLoaderDelegate.h"
 
 #define REFRESH_INTERNAL 0.5
 
@@ -24,7 +25,7 @@ static NSString * const kCHPlayerPlayerRate = @"rate";
 static const NSString *playerItemContext;
 static const NSString *playerContext;
 
-@interface CHPlayer ()
+@interface CHPlayer ()<AVAssetResourceLoaderDelegate>
 
 @property(nonatomic,strong)NSURL *currentURL;
 @property(nonatomic,strong)AVPlayerItem *playerItem;
@@ -32,6 +33,7 @@ static const NSString *playerContext;
 @property(strong, nonatomic)id playEndObserver;
 @property(strong,nonatomic)CHPlayerView *playerView;
 @property(nonatomic,assign)BOOL isPlayDone;
+@property(nonatomic,strong)CHPlayerResourceLoaderDelegate *reourceLoaderDelegate;
 
 @end
 
@@ -196,6 +198,9 @@ static const NSString *playerContext;
 - (void)prepareToPlay
 {
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:self.currentURL options:nil];
+    CHPlayerResourceLoaderDelegate *delegate = [[CHPlayerResourceLoaderDelegate alloc] init];
+    self.reourceLoaderDelegate = delegate;
+    [asset.resourceLoader setDelegate:delegate queue:dispatch_get_main_queue()];
     __weak CHPlayer *weakSelf = self;
     [asset loadValuesAsynchronouslyForKeys:[[self class] assetKeysShouldBeLoaded] completionHandler:^{
         

@@ -24,7 +24,7 @@
 @property(nonatomic,readonly,copy)NSString *fileName;
 @property(nonatomic,weak)id <CHPlayerResourceCacheInfoDelegate> delegate;
 
-- (void)addCacheRange:(NSRange)range;
+- (void)writeDataToFileWithData:(NSData *)data withRange:(NSRange)range;
 - (NSRange)findCachedRangeWithRange:(NSRange)range;
 
 @end

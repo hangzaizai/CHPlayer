@@ -8,11 +8,13 @@
 
 #import "CHPlayerResourceLoaderManager.h"
 #import "CHPlayerResourceCacheInfo.h"
-#import "CHPlayerResourceDownloadManager.h"
+#import "CHPlayerResourceLoadingRequestManager.h"
 
-@interface CHPlayerResourceLoaderManager ()
+@interface CHPlayerResourceLoaderManager ()<CHPlayerResourceLoadingRequestManagerDelegate>
 
 @property(nonatomic,strong)CHPlayerResourceCacheInfo *resourceCacheInfo;
+
+@property(nonatomic,strong)NSMutableArray *loadingRequestManagerArray;
 
 @end
 
@@ -24,13 +26,17 @@
     if ( self ) {
         CHPlayerResourceCacheInfo *cacheInfo = [[CHPlayerResourceCacheInfo alloc] init];
         self.resourceCacheInfo = cacheInfo;
+        self.loadingRequestManagerArray = [NSMutableArray array];
     }
     return self;
 }
 
 - (void)addAssetResourceLoadingRequest:(AVAssetResourceLoadingRequest *)request
 {
-    
+    CHPlayerResourceLoadingRequestManager *loadingRequest = [[CHPlayerResourceLoadingRequestManager alloc] initWithResourceLoadingRequest:request withChPlayerCacheInfo:self.resourceCacheInfo];
+    loadingRequest.delegate = self;
+    [loadingRequest startDownload];
+    [self.loadingRequestManagerArray addObject:loadingRequest];
 }
 
 - (void)cancelAssetResourceLoadingRequest:(AVAssetResourceLoadingRequest *)request
