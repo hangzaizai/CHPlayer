@@ -14,6 +14,8 @@
  */
 @interface CHPlayerResourceLoaderManager : NSObject
 
+- (instancetype)initWithURL:(NSURL *)playUrl;
+
 - (void)addAssetResourceLoadingRequest:(AVAssetResourceLoadingRequest *)request;
 
 - (void)cancelAssetResourceLoadingRequest:(AVAssetResourceLoadingRequest *)request;

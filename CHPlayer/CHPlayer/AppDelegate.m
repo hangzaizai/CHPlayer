@@ -24,7 +24,7 @@
     window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
-    [self test];
+    //[self test];
     
     
     return YES;
@@ -50,28 +50,28 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
-- (void)test
-{
-    NSString *str = @"abcdefghijklmnopqrstuvwxyz";
-    
-    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSData *subDataOne = [data subdataWithRange:NSMakeRange(0, 0)];
-    NSString *subStringOne = [[NSString alloc] initWithData:subDataOne encoding:NSUTF8StringEncoding];
-    
-    
-    NSData *subDataTwo = [data subdataWithRange:NSMakeRange(0, 5)];
-    NSString *subStringTwo = [[NSString alloc] initWithData:subDataTwo encoding:NSUTF8StringEncoding];
-    
-    NSData *subDataThree = [data subdataWithRange:NSMakeRange(5, 5)];
-    NSString *subStringThree = [[NSString alloc] initWithData:subDataThree encoding:NSUTF8StringEncoding];
-    
-    NSRange unionOne = NSUnionRange(NSMakeRange(0, 5), NSMakeRange(9, 5));
-    
-    NSRange sectionOne = NSIntersectionRange(NSMakeRange(0, 5), NSMakeRange(5, 5));
-    
-    NSLog(@"");
-    
-}
+//- (void)test
+//{
+//    NSString *str = @"abcdefghijklmnopqrstuvwxyz";
+//    
+//    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    NSData *subDataOne = [data subdataWithRange:NSMakeRange(0, 0)];
+//    NSString *subStringOne = [[NSString alloc] initWithData:subDataOne encoding:NSUTF8StringEncoding];
+//    
+//    
+//    NSData *subDataTwo = [data subdataWithRange:NSMakeRange(0, 5)];
+//    NSString *subStringTwo = [[NSString alloc] initWithData:subDataTwo encoding:NSUTF8StringEncoding];
+//    
+//    NSData *subDataThree = [data subdataWithRange:NSMakeRange(5, 5)];
+//    NSString *subStringThree = [[NSString alloc] initWithData:subDataThree encoding:NSUTF8StringEncoding];
+//    
+//    NSRange unionOne = NSUnionRange(NSMakeRange(0, 5), NSMakeRange(9, 5));
+//    
+//    NSRange sectionOne = NSIntersectionRange(NSMakeRange(0, 5), NSMakeRange(5, 5));
+//    
+//    NSLog(@"");
+//    
+//}
 
 @end

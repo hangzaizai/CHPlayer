@@ -89,6 +89,7 @@
     
     NSURL *fileHandleURL = [NSURL fileURLWithPath:filePath];
     self.fileHandleURL = fileHandleURL;
+    NSLog(@"文件地址为:%@",self.fileHandleURL);
     self.writeFileHandle = [NSFileHandle fileHandleForWritingToURL:fileHandleURL error:&error];
     if ( !error ) {
         if ( self.delegate && [self.delegate respondsToSelector:@selector(playerResourceCacheInfo:withError:)] ) {
@@ -111,9 +112,9 @@
         [[CHPlayerResourceCacheConfiguration shareInstance] copyFileWithResource:[self.fileHandleURL absoluteString] withDesName:self.fileName withError:&error];
         if ( error ) {
             NSLog(@"拷贝文件失败,错误信息为:%@",error);
-            
+        }else{
+            NSLog(@"拷贝文件成功临时文件的路径为:%@",self.fileHandleURL);
         }
-        
         return;
     }
     
@@ -132,6 +133,10 @@
 - (BOOL)checkDownloadDataIsFull
 {
     //对数据进行排序
+    
+    NSLog(@"下载的range=%@",self.cacheRanges);
+    
+    
     NSArray *sortedArr = [self.cacheRanges sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         
         NSRange rangeOne = [(NSValue *)obj1 rangeValue];

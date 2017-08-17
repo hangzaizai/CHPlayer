@@ -33,6 +33,13 @@
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         self.session = session;
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+        
+        long long fromOffset = range.location;
+        long long endOffset = range.location + range.length-1;
+        
+        NSString *range = [NSString stringWithFormat:@"bytes=%lld-%lld", fromOffset, endOffset];
+        [request setValue:range forHTTPHeaderField:@"Range"];
+
         NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
         [task resume];
         
@@ -45,6 +52,10 @@
     [self.session invalidateAndCancel];
 }
 
+- (NSRange)range
+{
+    return self.currentRange;
+}
 
 #pragma mark - session Delegate
 /**

@@ -193,12 +193,20 @@ static const NSString *playerContext;
     [[AVAudioSession sharedInstance] setActive:YES error:NULL];
 }
 
-
+- (NSURL *)getSchemeVideoURL:(NSURL *)url
+{
+    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
+    components.scheme = @"streaming";
+    return [components URL];
+}
 
 - (void)prepareToPlay
 {
+    
+    self.currentURL = [self getSchemeVideoURL:self.currentURL];
+    
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:self.currentURL options:nil];
-    CHPlayerResourceLoaderDelegate *delegate = [[CHPlayerResourceLoaderDelegate alloc] init];
+    CHPlayerResourceLoaderDelegate *delegate = [[CHPlayerResourceLoaderDelegate alloc] initWithURL:self.currentURL ];
     self.reourceLoaderDelegate = delegate;
     [asset.resourceLoader setDelegate:delegate queue:dispatch_get_main_queue()];
     __weak CHPlayer *weakSelf = self;

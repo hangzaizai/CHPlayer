@@ -15,4 +15,6 @@ ResouceLoaderDelegate 在iOS7-iOS10player的边下边播是通过
  */
 @interface CHPlayerResourceLoaderDelegate : NSObject<AVAssetResourceLoaderDelegate>
 
+- (instancetype)initWithURL:(NSURL *)playUrl;
+
 @end

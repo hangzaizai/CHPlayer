@@ -23,14 +23,22 @@
 @property(nonatomic,readonly,strong)AVAssetResourceLoadingRequest *currentLoadingRequest;
 @property(nonatomic,weak)id <CHPlayerResourceLoadingRequestManagerDelegate> delegate;
 
+@property(nonatomic,readonly,assign)NSRange currentRange;
+
+@property(nonatomic,readonly,strong)NSMutableData *receiveData;
+
 - (instancetype)initWithResourceLoadingRequest:(AVAssetResourceLoadingRequest *)request withChPlayerCacheInfo:(CHPlayerResourceCacheInfo *)cacheInfo;
 
 - (void)startDownload;
+
+- (void)cancelDownload;
 
 @end
 
 
 @protocol CHPlayerResourceLoadingRequestManagerDelegate <NSObject>
+
+- (void)playerResourceLoadingRequestManager:(CHPlayerResourceLoadingRequestManager *)requestManager didReceiveResponse:(NSHTTPURLResponse *)response;
 
 - (void)playerResourceLoadingRequestManager:(CHPlayerResourceLoadingRequestManager *)requestManager didComplicatedWithError:(NSError *)error;
 

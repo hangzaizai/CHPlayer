@@ -17,11 +17,11 @@
 
 @implementation CHPlayerResourceLoaderDelegate
 
-- (instancetype)init
+- (instancetype)initWithURL:(NSURL *)playUrl
 {
     self = [super init];
     if ( self ) {
-        CHPlayerResourceLoaderManager *resourceLoaderManager = [[CHPlayerResourceLoaderManager alloc] init];
+        CHPlayerResourceLoaderManager *resourceLoaderManager = [[CHPlayerResourceLoaderManager alloc] initWithURL:playUrl];
         self.resourceLoaderManager = resourceLoaderManager;
     }
     return self;
@@ -32,6 +32,7 @@
  */
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest
 {
+    NSLog(@"执行了WaitForLoading");
     [self.resourceLoaderManager addAssetResourceLoadingRequest:loadingRequest];
     return YES;
 }
@@ -43,7 +44,8 @@
  */
 - (void)resourceLoader:(AVAssetResourceLoader *)resourceLoader didCancelLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest
 {
-    [self.resourceLoaderManager cancelAssetResourceLoadingRequest:loadingRequest];
+    NSLog(@"cancel Loading");
+    //[self.resourceLoaderManager cancelAssetResourceLoadingRequest:loadingRequest];
 }
 
 

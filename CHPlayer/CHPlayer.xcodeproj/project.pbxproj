@@ -12,6 +12,7 @@
 		6613E1A21F408C88003608CE /* CHPlayerResourceDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6613E1A11F408C88003608CE /* CHPlayerResourceDownloadManager.m */; };
 		6636B6231F4478D000D59599 /* CHPlayerResourceCacheConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6636B6221F4478D000D59599 /* CHPlayerResourceCacheConfiguration.m */; };
 		6642F8E61F3DE30400B3D27B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6642F8E51F3DE30400B3D27B /* MBProgressHUD.m */; };
+		66478EA71F45C4F300E136CE /* NSHTTPURLResponse+HeadersConvenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 66478EA61F45C4F300E136CE /* NSHTTPURLResponse+HeadersConvenient.m */; };
 		66910B0E1F3B2DB600581896 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B0D1F3B2DB600581896 /* main.m */; };
 		66910B111F3B2DB600581896 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B101F3B2DB600581896 /* AppDelegate.m */; };
 		66910B141F3B2DB600581896 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66910B131F3B2DB600581896 /* ViewController.m */; };
@@ -66,6 +67,8 @@
 		6636B6221F4478D000D59599 /* CHPlayerResourceCacheConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHPlayerResourceCacheConfiguration.m; sourceTree = "<group>"; };
 		6642F8E41F3DE30400B3D27B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		6642F8E51F3DE30400B3D27B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		66478EA51F45C4F300E136CE /* NSHTTPURLResponse+HeadersConvenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+HeadersConvenient.h"; sourceTree = "<group>"; };
+		66478EA61F45C4F300E136CE /* NSHTTPURLResponse+HeadersConvenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+HeadersConvenient.m"; sourceTree = "<group>"; };
 		66910B091F3B2DB600581896 /* CHPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66910B0D1F3B2DB600581896 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		66910B0F1F3B2DB600581896 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				770C3ECC1F3D9B34009DA8E4 /* NSString+VedioTimeFormat.m */,
 				770C3ECE1F3DA06E009DA8E4 /* CHTableViewDataSource.h */,
 				770C3ECF1F3DA06E009DA8E4 /* CHTableViewDataSource.m */,
+				66478EA51F45C4F300E136CE /* NSHTTPURLResponse+HeadersConvenient.h */,
+				66478EA61F45C4F300E136CE /* NSHTTPURLResponse+HeadersConvenient.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				6613E1A21F408C88003608CE /* CHPlayerResourceDownloadManager.m in Sources */,
 				66D6D5181F3C87E5003DA492 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				773EBEB41F41631000C6E565 /* CHPlayerResourceContentInfo.m in Sources */,
+				66478EA71F45C4F300E136CE /* NSHTTPURLResponse+HeadersConvenient.m in Sources */,
 				66D6D5171F3C87E5003DA492 /* NSArray+PureLayout.m in Sources */,
 				773EBEAF1F41438F00C6E565 /* CHPlayerResourceCacheInfo.m in Sources */,
 				6642F8E61F3DE30400B3D27B /* MBProgressHUD.m in Sources */,
