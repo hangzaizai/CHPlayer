@@ -111,6 +111,11 @@ static const NSString *playerContext;
                 
                 if ( strongSelf.playerItem.loadedTimeRanges &&  [strongSelf.playerItem.loadedTimeRanges count] ) {
                     NSValue *value = [strongSelf.playerItem.loadedTimeRanges firstObject];
+                    
+                    for ( NSValue *rangeValue in strongSelf.playerItem.loadedTimeRanges ) {
+                        NSLog(@"缓冲时间为:%@",rangeValue);
+                    }
+                    
                     CMTimeRange timeRange = [value CMTimeRangeValue];
                     NSTimeInterval preloadTime = CMTimeGetSeconds(CMTimeAdd(timeRange.start, timeRange.duration));
                     if ( strongSelf.delegate && [strongSelf.delegate respondsToSelector:@selector(player:withPreloadTime:)]) {

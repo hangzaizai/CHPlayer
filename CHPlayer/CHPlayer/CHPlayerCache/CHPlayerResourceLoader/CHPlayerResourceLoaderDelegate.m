@@ -45,7 +45,9 @@
 - (void)resourceLoader:(AVAssetResourceLoader *)resourceLoader didCancelLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest
 {
     NSLog(@"cancel Loading");
-    //[self.resourceLoaderManager cancelAssetResourceLoadingRequest:loadingRequest];
+     NSLog(@"取消请求:length=%@,offset=%@",@(loadingRequest.dataRequest.requestedLength),@(loadingRequest.dataRequest.requestedOffset));
+    NSLog(@"is finied%@",@(loadingRequest.isFinished));
+    [self.resourceLoaderManager cancelAssetResourceLoadingRequest:loadingRequest];
 }
 
 

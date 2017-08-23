@@ -62,8 +62,13 @@
     }
     
     [self.resourceCacheInfo writeDataToFileWithData:requestManager.receiveData withRange:requestManager.currentRange];
-    
     [self.loadingRequestManagerArray removeObject:requestManager];
+}
+
+- (void)playerResourceLoadingRequestManager:(CHPlayerResourceLoadingRequestManager *)requestManager didReceiveData:(NSData *)data withRange:(NSRange)range
+{
+    [self.resourceCacheInfo writeDataToFileWithData:requestManager.receiveData withRange:range];
+
 }
 
 - (void)playerResourceLoadingRequestManager:(CHPlayerResourceLoadingRequestManager *)requestManager didReceiveResponse:(NSHTTPURLResponse *)response

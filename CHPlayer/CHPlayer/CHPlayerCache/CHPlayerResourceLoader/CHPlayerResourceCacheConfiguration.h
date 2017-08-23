@@ -19,11 +19,11 @@
 /**
  将一个文件拷贝到另外一个文件
 
- @param sourcePath 源文件的完成路径
+ @param sourceURL 源文件的完整URL
  @param fileName   目的文件的文件名
  @param error      有错误则表示拷贝失败
  */
-- (void)copyFileWithResource:(NSString *)sourcePath withDesName:(NSString *)fileName withError:(NSError **)error;
+- (void)copyFileWithResource:(NSURL *)sourceURL withDesName:(NSString *)fileName withError:(NSError **)error;
 
 
 /**

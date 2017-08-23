@@ -40,6 +40,8 @@
 
 - (void)playerResourceLoadingRequestManager:(CHPlayerResourceLoadingRequestManager *)requestManager didReceiveResponse:(NSHTTPURLResponse *)response;
 
+- (void)playerResourceLoadingRequestManager:(CHPlayerResourceLoadingRequestManager *)requestManager didReceiveData:(NSData *)data withRange:(NSRange)range;
+
 - (void)playerResourceLoadingRequestManager:(CHPlayerResourceLoadingRequestManager *)requestManager didComplicatedWithError:(NSError *)error;
 
 @end

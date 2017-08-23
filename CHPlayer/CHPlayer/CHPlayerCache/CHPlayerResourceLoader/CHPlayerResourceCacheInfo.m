@@ -104,12 +104,14 @@
 //将文件写入指定的range中
 - (void)writeDataToFileWithData:(NSData *)data withRange:(NSRange)range
 {
+    self.cacheRanges = [[self deleteRepeatedRange] mutableCopy];
+    
     if ( [self checkDownloadDataIsFull] ) {
         
         NSError *error = nil;
         
         //将临时文件拷贝到永久文件
-        [[CHPlayerResourceCacheConfiguration shareInstance] copyFileWithResource:[self.fileHandleURL absoluteString] withDesName:self.fileName withError:&error];
+        [[CHPlayerResourceCacheConfiguration shareInstance] copyFileWithResource:self.fileHandleURL withDesName:self.fileName withError:&error];
         if ( error ) {
             NSLog(@"拷贝文件失败,错误信息为:%@",error);
         }else{
@@ -126,16 +128,44 @@
 }
 
 #pragma mark -range
+- (NSArray *)deleteRepeatedRange
+{
+    NSMutableArray *valueRangeArray = [self.cacheRanges mutableCopy];
+    NSMutableArray *remainRangeArray = [self.cacheRanges mutableCopy];
+    
+    NSLog(@"下载的ranges为:%@",self.cacheRanges);
+    
+    if ( self.cacheRanges.count==0 ) {
+        return valueRangeArray;
+    }
+    
+    for ( int i = 0 ; i < valueRangeArray.count -1 ; i++ ) {
+        NSRange rangeI = [valueRangeArray[i] rangeValue];
+        for (int j = i+1 ; j < valueRangeArray.count ; j++ ) {
+            NSRange rangeJ = [valueRangeArray[j] rangeValue];
+            if ( rangeI.location==rangeJ.location && rangeI.length <= rangeJ.length ) {
+                [remainRangeArray removeObjectAtIndex:i];
+            }else if ( rangeI.location<rangeJ.location && NSMaxRange(rangeI) >=NSMaxRange(rangeJ) ) {
+                [remainRangeArray removeObjectAtIndex:i];
+            }
+        }
+    }
+    
+    return remainRangeArray;
+
+}
 
 /**
  检测下载的数据是否已经下载完
  */
 - (BOOL)checkDownloadDataIsFull
 {
+    if ( self.cacheRanges.count==0 ) {
+        return NO;
+    }
+    
     //对数据进行排序
-    
-    NSLog(@"下载的range=%@",self.cacheRanges);
-    
+    //NSLog(@"下载的range=%@",self.cacheRanges);
     
     NSArray *sortedArr = [self.cacheRanges sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         
@@ -143,11 +173,14 @@
         NSRange rangeTwo = [(NSValue *)obj2 rangeValue];
         
         NSComparisonResult result = rangeOne.location <= rangeTwo.location ? NSOrderedAscending : NSOrderedDescending;
-        return result==NSOrderedAscending;
+        return result==NSOrderedDescending;
     }];
+    
+    NSLog(@"排序后的range=%@",sortedArr);
     
     NSRange firstRange = [((NSValue *)[sortedArr firstObject]) rangeValue];
     NSRange lastRange = [((NSValue *)[sortedArr lastObject]) rangeValue];
+    
     
     if ( firstRange.location > 0 ) {
         return NO;
@@ -159,12 +192,10 @@
     
     NSInteger maxRange = NSMaxRange(firstRange);
     for ( int i = 1 ; i < sortedArr.count ; i++ ) {
-        
         NSRange range = [sortedArr[i] rangeValue];
         if ( maxRange < range.location ) {
             return NO;
         }
-        
         maxRange = NSMaxRange(range);
     }
     

@@ -22,6 +22,7 @@
 
 @property(nonatomic,assign)NSRange currentRange;
 
+
 @end
 
 @implementation CHPlayerResourceLoadingRequestManager
@@ -31,6 +32,7 @@
     self = [super init];
     if ( self ) {
         self.currentLoadingRequest = request;
+        self.receiveData = [NSMutableData data];
     }
     return self;
 }
@@ -95,17 +97,25 @@
     self.currentLoadingRequest.response = response;
     
     NSLog(@"fileSize=%@",@(contentInfo.contentLength));
-    
-    //初始化接收数据
-    self.receiveData = [NSMutableData dataWithLength:contentInfo.contentLength];
-    
-    
 }
 
 - (void)playerResourceDownloadManager:(CHPlayerResourceDownloadManager *)mamager didReceiveReceiveData:(NSData *)data
 {
     [self.currentLoadingRequest.dataRequest respondWithData:data];
     [self.receiveData appendData:data];
+    
+    NSRange range = NSMakeRange(self.currentRange.location, [self.receiveData length]);
+    NSLog(@"下载的range=%@",[NSValue valueWithRange:range] );
+    
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(playerResourceLoadingRequestManager:didReceiveData:withRange:)]) {
+        [self.delegate playerResourceLoadingRequestManager:self didReceiveData:self.receiveData withRange:range];
+    }
+    
+//    if ( [self.receiveData length] >= self.currentRange.length ) {
+//        NSLog(@"回赛数据完成:length=%@,offset=%@",@(self.currentLoadingRequest.dataRequest.requestedLength),@(self.currentLoadingRequest.dataRequest.requestedOffset));
+//        [self.currentLoadingRequest finishLoading];
+//    }
+    
 }
 
 - (void)playerResourceDownloadManager:(CHPlayerResourceDownloadManager *)mamager didComplicatedWithError:(NSError *)error
@@ -116,7 +126,10 @@
     if ( error ) {
         [self.currentLoadingRequest finishLoadingWithError:error];
     }else{
-        [self.currentLoadingRequest finishLoading];
+        if ( !self.currentLoadingRequest.isFinished ) {
+             [self.currentLoadingRequest finishLoading];
+        }
+       
     }
     
     if ( self.delegate && [self.delegate respondsToSelector:@selector(playerResourceLoadingRequestManager:didComplicatedWithError:)] ) {

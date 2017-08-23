@@ -45,14 +45,17 @@
     return self;
 }
 
-- (void)copyFileWithResource:(NSString *)sourcePath withDesName:(NSString *)fileName withError:(NSError **)error
+- (void)copyFileWithResource:(NSURL *)sourceURL withDesName:(NSString *)fileName withError:(NSError **)error
 {
     if ( !fileName || [fileName length]==0 ) {
-        fileName = [sourcePath lastPathComponent];
+        fileName = [[sourceURL absoluteString] lastPathComponent];
     }
     NSString *descPath = [self.fileDirectoryPath stringByAppendingPathComponent:fileName];
     
-    [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:descPath error:error];
+    NSURL *descURL = [NSURL fileURLWithPath:descPath];
+    
+    
+    [[NSFileManager defaultManager] copyItemAtURL:sourceURL toURL:descURL error:error];
 }
 
 - (NSString *)filePathForFileName:(NSString *)fileName
